@@ -71,17 +71,51 @@ class _ResumeScreenState extends State<ResumeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Resume'),
+       centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: resume.length,
-        itemBuilder: (context, index) {
-          return ResumeListItem(
-            item: resume[index],
-            onDelete: () => _deleteItem(index),
-            onEdit: () => _editItem(index),
-          );
-        },
+      body: Container(
+        color: Colors.grey[200],
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (resume.isEmpty)
+              Center(
+                child: Text(
+                  'Your resume is empty. Start by adding items.',
+                  style: TextStyle(fontSize: 18.0),
+                ),
+              )
+            else
+              Expanded(
+                child: ListView.builder(
+                  itemCount: resume.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      elevation: 3.0,
+                      margin: EdgeInsets.symmetric(vertical: 8.0),
+                      child: ResumeListItem(
+                        item: resume[index],
+                        onDelete: () => _deleteItem(index),
+                        onEdit: () => _editItem(index),
+                      ),
+                    );
+                  },
+                ),
+              ),
+          ],
+        ),
       ),
+      // body: ListView.builder(
+      //   itemCount: resume.length,
+      //   itemBuilder: (context, index) {
+      //     return ResumeListItem(
+      //       item: resume[index],
+      //       onDelete: () => _deleteItem(index),
+      //       onEdit: () => _editItem(index),
+      //     );
+      //   },
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addItem,
         child: Icon(Icons.add),

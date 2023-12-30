@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_builder/screens/add_item_screen.dart';
 import 'package:resume_builder/screens/resume_screen.dart';
 
 void main() {
@@ -13,10 +12,11 @@ class ResumeBuilder extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+          primarySwatch: Colors.blue,
+          hintColor: Colors.orange,
+          fontFamily: 'Roboto'
       ),
-      home: AddItemScreen(),
+      home: ResumeScreen(),
     );
   }
 }
