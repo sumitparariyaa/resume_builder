@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder/screens/resume_screen.dart';
+import 'package:resume_builder/splash_screen.dart';
 
 void main() {
   runApp(const ResumeBuilder());
@@ -11,13 +12,12 @@ class ResumeBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Resume Builder',
       theme: ThemeData(
           primarySwatch: Colors.blue,
-          hintColor: Colors.orange,
           fontFamily: 'Roboto'
       ),
-      home: const ResumeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

@@ -86,6 +86,7 @@ class _ResumeScreenState extends State<ResumeScreen> {
       appBar: AppBar(
         title: const Text('Your Resume'),
        centerTitle: true,
+        backgroundColor: Colors.deepPurpleAccent.shade100,
       ),
       body: Container(
         color: Colors.grey[200],
