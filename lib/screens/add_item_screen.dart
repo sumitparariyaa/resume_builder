@@ -3,6 +3,8 @@ import '../models/resume_item.dart';
 import '../widgets/text_widget.dart';
 
 class AddItemScreen extends StatefulWidget {
+  const AddItemScreen({super.key});
+
   @override
   _AddItemScreenState createState() => _AddItemScreenState();
 }
@@ -15,7 +17,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Resume Item'),
+        title: const Text('Add Resume Item'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -24,17 +26,17 @@ class _AddItemScreenState extends State<AddItemScreen> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: _contentController,
-              decoration: InputDecoration(labelText: 'Content'),
+              decoration: const InputDecoration(labelText: 'Content'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: _addItem,
-              child: Text('Add Item'),
+              child: const Text('Add Item'),
             ),
           ],
         ),

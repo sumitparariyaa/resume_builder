@@ -7,7 +7,7 @@ import '../models/resume_item.dart';
 class EditItemScreen extends StatefulWidget {
   final ResumeItem item;
 
-  EditItemScreen({required this.item});
+  EditItemScreen({super.key, required this.item});
 
   @override
   _EditItemScreenState createState() => _EditItemScreenState();
@@ -28,7 +28,7 @@ class _EditItemScreenState extends State<EditItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Resume Item'),
+        title: const Text('Edit Resume Item'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -37,17 +37,17 @@ class _EditItemScreenState extends State<EditItemScreen> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: _contentController,
-              decoration: InputDecoration(labelText: 'Content'),
+              decoration: const InputDecoration(labelText: 'Content'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: _editItem,
-              child: Text('Save Changes'),
+              child: const Text('Save Changes'),
             ),
           ],
         ),

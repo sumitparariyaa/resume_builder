@@ -6,7 +6,7 @@ class ResumeListItem extends StatelessWidget {
   final VoidCallback onDelete;
   final VoidCallback onEdit;
 
-  ResumeListItem({required this.item, required this.onDelete, required this.onEdit});
+  ResumeListItem({super.key, required this.item, required this.onDelete, required this.onEdit});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,11 @@ class ResumeListItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
             onPressed: onEdit,
           ),
           IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: onDelete,
           ),
         ],
