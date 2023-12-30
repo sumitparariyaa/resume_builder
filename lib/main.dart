@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_builder/screens/resume_screen.dart';
 
 void main() {
   runApp(const ResumeBuilder());
@@ -14,6 +15,7 @@ class ResumeBuilder extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      home: ResumeScreen(),
     );
   }
 }
