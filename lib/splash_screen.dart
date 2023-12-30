@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 4), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ResumeScreen())));
+    Timer(const Duration(seconds: 4), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ResumeScreen())));
   }
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                 Text(" Resume Builder", style: TextStyle(fontSize: 25,color:Colors.deepPurpleAccent.shade100,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic),),
-                Text("By Sumit Kumar",)
+                 Text("Resume Builder", style: TextStyle(fontSize: 25,color:Colors.deepPurpleAccent.shade100,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic),),
+                const Text("By Sumit Kumar",)
               ],
             ),
           )
