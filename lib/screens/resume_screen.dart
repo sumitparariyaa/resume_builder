@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 import 'package:open_file/open_file.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -23,6 +24,16 @@ class _ResumeScreenState extends State<ResumeScreen> {
   void initState() {
     super.initState();
     _loadResume();
+  }
+  _onReorder(int oldIndex, int newIndex) {
+    setState(() {
+      if (oldIndex < newIndex) {
+        newIndex -= 1;
+      }
+      final item = resume.removeAt(oldIndex);
+      resume.insert(newIndex, item);
+      _saveResume();
+    });
   }
   _loadResume() async {
     List<ResumeItem> loadedResume = await ResumeDataManager.getResume();
@@ -78,34 +89,32 @@ class _ResumeScreenState extends State<ResumeScreen> {
        centerTitle: true,
       ),
       body: Container(
-        color: Colors.grey[200],
         padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: resume.isEmpty
+            ? Center(
+          child: Text(
+            'Your resume is empty. Start by adding items.',
+            style: TextStyle(fontSize: 18.0),
+          ),
+        )
+            : ReorderableListView(
+          onReorder: _onReorder,
           children: [
-            if (resume.isEmpty)
-              Center(
-                child: Text(
-                  'Your resume is empty. Start by adding items.',
-                  style: TextStyle(fontSize: 18.0),
+            for (var index = 0; index < resume.length; index++)
+              ReorderableListView(
+                key: ValueKey(index),
+                onReorder: _onReorder,
+                children: [
+                Card(
+                  elevation: 3.0,
+                  margin: EdgeInsets.symmetric(vertical: 8.0),
+                  child: ResumeListItem(
+                    item: resume[index],
+                    onDelete: () => _deleteItem(index),
+                    onEdit: () => _editItem(index),
+                  ),
                 ),
-              )
-            else
-              Expanded(
-                child: ListView.builder(
-                  itemCount: resume.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 3.0,
-                      margin: EdgeInsets.symmetric(vertical: 8.0),
-                      child: ResumeListItem(
-                        item: resume[index],
-                        onDelete: () => _deleteItem(index),
-                        onEdit: () => _editItem(index),
-                      ),
-                    );
-                  },
-                ),
+                ]
               ),
           ],
         ),
@@ -184,4 +193,5 @@ class _ResumeScreenState extends State<ResumeScreen> {
     // Open the PDF using a PDF viewer
     OpenFile.open(pdfPath);
   }
+
 }
